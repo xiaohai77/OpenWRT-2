@@ -273,3 +273,16 @@ if [ -f "$RUST_FILE" ]; then
 		echo "rust fix failed; continuing!"
 	fi
 fi
+
+#修复dockerd/dockerman的nftables兼容性（fw4默认使用nftables，dockerd/dockerman原版基于iptables）
+DOCKER_BUILD_DIR="$(cd "$PKG_PATH/.." 2>/dev/null && pwd)"
+if [ -n "$DOCKER_BUILD_DIR" ] && [ -f "$GITHUB_WORKSPACE/Scripts/Docker.sh" ]; then
+	echo " "
+	source "$GITHUB_WORKSPACE/Scripts/Docker.sh"
+
+	if docker_stack_sync_nftables_compat "$DOCKER_BUILD_DIR"; then
+		echo "docker nftables compat has been fixed!"
+	else
+		echo "docker nftables compat fix failed; continuing!"
+	fi
+fi
