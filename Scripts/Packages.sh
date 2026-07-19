@@ -60,7 +60,7 @@ UPDATE_PACKAGE "theme-fluent" "LazuliKao/luci-theme-fluent" "main"
 # 自定义
 UPDATE_PACKAGE "substore" "XiaoHaiSly/OpenWrt-SubStore" "main"
 UPDATE_PACKAGE "miaomiaowu" "XiaoHaiSly/OpenWrt-MMW" "main"
-UPDATE_PACKAGE "docker" "lisaac/luci-lib-docker" "master"
+UPDATE_PACKAGE "luci-lib-docker" "lisaac/luci-lib-docker" "master"
 UPDATE_PACKAGE "dockerman" "lisaac/luci-app-dockerman" "master"
 # lisaac/luci-app-dockerman 仓库结构为 applications/luci-app-dockerman/，
 # 而仓库目录本身克隆下来也叫 luci-app-dockerman —— 与 UPDATE_PACKAGE 的
