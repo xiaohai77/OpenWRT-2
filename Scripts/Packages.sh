@@ -17,8 +17,9 @@ UPDATE_PACKAGE() {
 	for NAME in "${PKG_LIST[@]}"; do
 		# 查找匹配的目录
 		echo "Search directory: $NAME"
-		# 排除 docker 和 dockerd：防止它们的目录被通配符误删
-		local FOUND_DIRS=$(find ../feeds/luci/ ../feeds/packages/ -maxdepth 3 -type d -iname "*$NAME*" 2>/dev/null | grep -vE '/(docker|dockerd)$')
+		# 排除 dockerd：其目录名包含 "docker" 子串，会被 UPDATE_PACKAGE "docker" 的通配符误删，
+		# 但 dockerd 是 containerd/runc/tini 等官方包的编译依赖，绝不能删。
+		local FOUND_DIRS=$(find ../feeds/luci/ ../feeds/packages/ -maxdepth 3 -type d -iname "*$NAME*" 2>/dev/null | grep -vE '/dockerd$')
 
 		# 删除找到的目录
 		if [ -n "$FOUND_DIRS" ]; then
