@@ -905,6 +905,15 @@ docker_stack_sync_nftables_compat() {
         return 1
     }
 
+    # dockerman 不参与 nftables 补丁本身，但它是本项目实际启用 dockerd 的唯一入口
+    # （CONFIG_PACKAGE_luci-app-dockerman=y 触发 +dockerd 依赖），缺失时不能静默放行，
+    # 否则会出现"补丁成功但 dockerd 从未被 .config 选中、也从未编译"的假成功。
+    if ! _docker_stack_resolve_dockerman_init "$build_dir" >/dev/null; then
+        echo "错误：未找到 luci-app-dockerman 的 init 脚本，dockerman 包可能未成功克隆/安装，dockerd 将不会被 .config 选中" >&2
+        return 1
+    fi
+
+
     if [ "$dry_run" = "1" ]; then
         echo "[dry-run] dockerd Makefile DEPENDS will switch to nftables-default compatible set"
         echo "[dry-run] dockerd Makefile vendored-version checks will tolerate missing installer files"

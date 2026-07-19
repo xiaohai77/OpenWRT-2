@@ -61,8 +61,8 @@ UPDATE_PACKAGE "theme-fluent" "LazuliKao/luci-theme-fluent" "main"
 # 自定义
 UPDATE_PACKAGE "substore" "XiaoHaiSly/OpenWrt-SubStore" "main"
 UPDATE_PACKAGE "miaomiaowu" "XiaoHaiSly/OpenWrt-MMW" "main"
-UPDATE_PACKAGE "docker" "lisaac/luci-lib-docker" "main"
-UPDATE_PACKAGE "dockerman" "lisaac/luci-app-dockerman" "main"
+UPDATE_PACKAGE "docker" "lisaac/luci-lib-docker" "master"
+UPDATE_PACKAGE "dockerman" "lisaac/luci-app-dockerman" "master" "pkg"
 
 UPDATE_PACKAGE "momo" "nikkinikki-org/OpenWrt-momo" "main"
 UPDATE_PACKAGE "nikki" "nikkinikki-org/OpenWrt-nikki" "main"
