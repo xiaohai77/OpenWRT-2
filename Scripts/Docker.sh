@@ -9,7 +9,7 @@
 #      "../docker/Makefile" 做版本一致性校验，两者都不能删）
 # ============================================================
 
-# TODO：换成你自己整理好的合并仓库，形如 "your-github-name/openwrt-docker-stack"
+# 合并仓库地址：https://github.com/XiaoHaiSly/OpenWrt-dockerman
 DOCKER_STACK_REPO="XiaoHaiSly/OpenWrt-dockerman"
 DOCKER_STACK_BRANCH="main"
 
@@ -24,6 +24,21 @@ docker_stack_install_from_mirror() {
     local tmp_dir="./.openwrt-docker-stack-tmp"
 
     rm -rf "$tmp_dir" ./luci-lib-docker ./luci-app-dockerman
+
+    # 官方 luci feed 自带同名的 feeds/luci/applications/luci-app-dockerman，
+    # 不删的话会和这里装的 package/luci-app-dockerman 撞包名，build 系统按
+    # 目录扫描顺序会选中 feeds/ 下那份（旧版、只支持 iptables），而不是这里
+    # 装的版本 —— 之前用 UPDATE_PACKAGE 时它自带的通配符清理顺带删了这个目录，
+    # 现在改成直接 clone，要在这里手动补上。注意不要动 feeds/packages/utils/docker
+    # 和 dockerd，dockerd 编译时要用官方 docker(CLI) 的 Makefile 做版本校验。
+    local OFFICIAL_DOCKERMAN
+    OFFICIAL_DOCKERMAN=$(find ../feeds/luci -maxdepth 3 -type d -iname 'luci-app-dockerman' 2>/dev/null)
+    if [ -n "$OFFICIAL_DOCKERMAN" ]; then
+        while read -r DIR; do
+            rm -rf "$DIR"
+            echo "Delete directory (official luci-app-dockerman, would conflict): $DIR"
+        done <<< "$OFFICIAL_DOCKERMAN"
+    fi
 
     if ! git clone --depth=1 --single-branch --branch "$DOCKER_STACK_BRANCH" \
         "https://github.com/$DOCKER_STACK_REPO.git" "$tmp_dir"; then
