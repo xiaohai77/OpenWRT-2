@@ -77,6 +77,16 @@ else
 	echo "dockerman flatten failed: applications/luci-app-dockerman not found in clone!"
 fi
 
+# lisaac 的 luci-lib-docker / luci-app-dockerman 两个 Makefile 里 PKG_VERSION 都带 "v" 前缀
+# （例如 v0.3.4、v0.5.26），opkg 不检查这个格式，但 apk mkpkg 要求版本号必须以数字开头，
+# 否则报 "package version is invalid" 直接编译失败，这里去掉 v 前缀。
+for DOCKER_MK in "./luci-lib-docker/Makefile" "./luci-app-dockerman/Makefile"; do
+	if [ -f "$DOCKER_MK" ] && grep -q '^PKG_VERSION:=v' "$DOCKER_MK"; then
+		sed -i -E 's/^PKG_VERSION:=v/PKG_VERSION:=/' "$DOCKER_MK"
+		echo "$DOCKER_MK PKG_VERSION v-prefix stripped for apk compat!"
+	fi
+done
+
 UPDATE_PACKAGE "momo" "nikkinikki-org/OpenWrt-momo" "main"
 UPDATE_PACKAGE "nikki" "nikkinikki-org/OpenWrt-nikki" "main"
 UPDATE_PACKAGE "openclash" "vernesong/OpenClash" "dev" "pkg"
