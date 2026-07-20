@@ -10,7 +10,7 @@
 # ============================================================
 
 # TODO：换成你自己整理好的合并仓库，形如 "your-github-name/openwrt-docker-stack"
-DOCKER_STACK_REPO="YOUR_GITHUB_USERNAME/openwrt-docker-stack"
+DOCKER_STACK_REPO="XiaoHaiSly/OpenWrt-dockerman"
 DOCKER_STACK_BRANCH="main"
 
 # UPDATE_PACKAGE 通配符清理阶段（按 *docker* 匹配删除旧目录）不应该删除的
