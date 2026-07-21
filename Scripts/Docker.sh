@@ -52,7 +52,7 @@ docker_stack_install_from_mirror() {
     mv -f "$tmp_dir/luci-lib-docker" "$pkg_dir/luci-lib-docker"
     mv -f "$tmp_dir/luci-app-dockerman" "$pkg_dir/luci-app-dockerman"
     rm -rf "$tmp_dir"
-    echo "docker/dockerman 已从合并仓库 $DOCKER_STACK_REPO 安装完成！"
+    echo "docker/dockerman 已从仓库 $DOCKER_STACK_REPO 安装完成！"
 }
 
 docker_stack_setup() {
