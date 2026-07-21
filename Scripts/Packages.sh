@@ -59,6 +59,7 @@ UPDATE_PACKAGE "theme-fluent" "LazuliKao/luci-theme-fluent" "main"
 # 自定义
 UPDATE_PACKAGE "substore" "XiaoHaiSly/OpenWrt-SubStore" "main"
 UPDATE_PACKAGE "miaomiaowu" "XiaoHaiSly/OpenWrt-MMW" "main"
+UPDATE_PACKAGE "adguardhome" "kenzok78/luci-app-adguardhome" "main"
 
 UPDATE_PACKAGE "momo" "nikkinikki-org/OpenWrt-momo" "main"
 UPDATE_PACKAGE "nikki" "nikkinikki-org/OpenWrt-nikki" "main"
