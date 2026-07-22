@@ -45,6 +45,21 @@ YJjfM7/Fd1eVSpC7k4I/80OpF8lxuoCMbNilssnMtG2WUv/idDjcIEa+Lw==
 -----END PUBLIC KEY-----
 EOF
 
+cat > ./files/etc/apk/repositories.d/nikki.list <<EOF
+https://nikkinikki.pages.dev/SNAPSHOT/aarch64_cortex-a53/nikki/packages.adb
+EOF
+
+cat > ./files/etc/apk/repositories.d/momo.list <<EOF
+https://momomomo.pages.dev/SNAPSHOT/aarch64_cortex-a53/momo/packages.adb
+EOF
+
+cat > ./files/etc/apk/keys/nikki-apk.pem <<'EOF'
+-----BEGIN PUBLIC KEY-----
+MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAETOwt83tzTFqyvjwimjuuvslR40t6
+XnROMwxZsC0iQAr2hHjuXX8qyhf5WaD2Hd897+Gc1/+4W4DMqroNp5w2Dg==
+-----END PUBLIC KEY-----
+EOF
+
 #配置文件修改
 echo "CONFIG_PACKAGE_luci=y" >> ./.config
 echo "CONFIG_LUCI_LANG_zh_Hans=y" >> ./.config
