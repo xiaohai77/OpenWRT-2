@@ -47,10 +47,10 @@ UPDATE_PACKAGE() {
 # UPDATE_PACKAGE "open-app-filter" "destan19/OpenAppFilter" "master" "" "luci-app-appfilter oaf" 这样会把原有的open-app-filter，luci-app-appfilter，oaf相关组件删除，不会出现coremark错误。
 
 # 自定义
-UPDATE_PACKAGE "singbox" "XiaoHaiSly/OpenWrt-SingBox" "beta"
+UPDATE_PACKAGE "sing-box" "XiaoHaiSly/OpenWrt-SingBox" "beta"
 UPDATE_PACKAGE "substore" "XiaoHaiSly/OpenWrt-SubStore" "main"
 UPDATE_PACKAGE "miaomiaowu" "XiaoHaiSly/OpenWrt-MMW" "main"
-UPDATE_PACKAGE "adguardhome" "XiaoHaiSly/luci-app-adguardhome" "main"
+UPDATE_PACKAGE "luci-app-adguardhome" "XiaoHaiSly/luci-app-adguardhome" "main"
 UPDATE_PACKAGE "lucky" "XiaoHaiSly/luci-app-lucky" "main"
 
 # UPDATE_PACKAGE "包名" "项目地址" "项目分支" "pkg/name，可选，pkg为从大杂烩中单独提取包名插件；name为重命名为包名"
