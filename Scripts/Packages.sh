@@ -50,7 +50,7 @@ UPDATE_PACKAGE() {
 UPDATE_PACKAGE "singbox" "XiaoHaiSly/OpenWrt-SingBox" "main"
 UPDATE_PACKAGE "substore" "XiaoHaiSly/OpenWrt-SubStore" "main"
 UPDATE_PACKAGE "miaomiaowu" "XiaoHaiSly/OpenWrt-MMW" "main"
-UPDATE_PACKAGE "luci-app-adguardhome" "XiaoHaiSly/luci-app-adguardhome" "main"
+UPDATE_PACKAGE "adguardhome" "XiaoHaiSly/luci-app-adguardhome" "main"
 UPDATE_PACKAGE "lucky" "XiaoHaiSly/luci-app-lucky" "main"
 
 # UPDATE_PACKAGE "包名" "项目地址" "项目分支" "pkg/name，可选，pkg为从大杂烩中单独提取包名插件；name为重命名为包名"
